@@ -1,0 +1,2 @@
+cp $(ros2 pkg prefix zed_wrapper)/share/zed_wrapper/config/zed2i.yaml \
+  brainbox_husky_bringup/config/

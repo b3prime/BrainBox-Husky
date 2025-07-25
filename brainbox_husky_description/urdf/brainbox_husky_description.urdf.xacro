@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+	
+	<xacro:include filename="$(find brainbox_husky_description)/urdf/gnss_antenna.urdf.xacro"/>
+	<xacro:include filename="$(find brainbox_husky_description)/urdf/vn100.urdf.xacro"/>
+	<xacro:include filename="$(find brainbox_husky_description)/urdf/zed2i.urdf.xacro"/>
+
+	<xacro:gnss_antenna parent_link="default_mount"
+        	            xyz="0.215 0 0.29"
+	        	    rpy="0 0 0"/>
+
+	<xacro:vn100 parent_link="default_mount"
+         	     xyz="0.215 0.102 0.11"
+		     rpy="0 0 0"/>
+
+	<xacro:zed2i parent_link="default_mount"
+	  	     xyz="0.31 0 0.035"
+	 	     rpy="0 0 0"/>
+
+</robot>

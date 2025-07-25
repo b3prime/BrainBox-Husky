@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <material name="gnss_light_grey">
+    <color rgba="0.85 0.85 0.85 1"/>
+  </material>
+
+  <xacro:macro name="gnss_antenna" params="parent_link xyz rpy">
+    <link name="gnss_antenna_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://brainbox_husky_description/meshes/gnss_antenna.stl"
+                scale="0.1 0.1 0.1"/>
+        </geometry>
+        <material name="gnss_light_grey"/>
+      </visual>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.335"/>
+        <inertia
+          ixx="1e-5" ixy="0" ixz="0"
+          iyy="1e-5" iyz="0" izz="1e-5"/>
+      </inertial>
+    </link>
+
+    <joint name="gnss_antenna_joint" type="fixed">
+      <parent link="${parent_link}"/>
+      <child  link="gnss_antenna_link"/>
+      <origin xyz="${xyz}" rpy="${rpy}"/>
+    </joint>
+  </xacro:macro>
+
+</robot>
+

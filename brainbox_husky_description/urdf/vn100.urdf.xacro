@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <material name="vn_red">
+    <color rgba="0.929 0.110 0.141 1.0"/>
+  </material>
+
+  <xacro:macro name="vn100" params="parent_link xyz rpy">
+    <link name="vn100_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.03 0.03 0.01"/>
+        </geometry>
+        <material name="vn_red"/>
+      </visual>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.03"/>
+        <inertia
+          ixx="1e-5" ixy="0" ixz="0"
+          iyy="1e-5" iyz="0" izz="1e-5"/>
+      </inertial>
+    </link>
+
+    <joint name="vn100_joint" type="fixed">
+      <parent link="${parent_link}"/>
+      <child  link="vn100_link"/>
+      <origin xyz="${xyz}" rpy="${rpy}"/>
+    </joint>
+  </xacro:macro>
+
+</robot>
+

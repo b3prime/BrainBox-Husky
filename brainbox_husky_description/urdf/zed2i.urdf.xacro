@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="https://ros.org/wiki/xacro">
+	<xacro:include filename="$(find zed_wrapper)/urdf/zed_macro.urdf.xacro"/>
+	<xacro:macro name="zed2i" params="parent_link xyz rpy">
+		<xacro:zed_camera
+			name="zed2i"
+			model="zed2i"
+			enable_gnss="false">
+
+		<gnss_origin xyz="0 0 0" rpy="0 0 0"/>
+
+		</xacro:zed_camera>
+
+		<joint name="zed2i_joint" type="fixed">
+			<parent link="${parent_link}"/>
+			<child link="zed2i_camera_link"/>
+			<origin xyz="${xyz}" rpy="${rpy}"/>
+		</joint>
+	</xacro:macro>
+</robot>

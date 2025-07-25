@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="a200-0000">
+
+  <!-- Common -->
+  <xacro:include filename="$(find clearpath_platform_description)/urdf/common.urdf.xacro"/>
+
+  <!-- Platform -->
+  <xacro:include filename="$(find clearpath_platform_description)/urdf/a200/a200.urdf.xacro"/>
+  <xacro:a200 wheel="default"/>
+
+
+  <!-- Attachments -->
+
+  <xacro:include filename="$(find clearpath_platform_description)/urdf/a200/attachments/bumper.urdf.xacro"/>
+  <xacro:bumper name="front_bumper" model="default" parent_link="front_bumper_mount" extension="0.0">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+  </xacro:bumper>
+
+  <xacro:include filename="$(find clearpath_platform_description)/urdf/a200/attachments/bumper.urdf.xacro"/>
+  <xacro:bumper name="rear_bumper" model="default" parent_link="rear_bumper_mount" extension="0.0">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+  </xacro:bumper>
+
+
+  <!-- Links -->
+
+  <xacro:include filename="$(find clearpath_platform_description)/urdf/links/mesh.urdf.xacro"/>
+  <xacro:mesh name="sensor_box" parent_link="default_mount" visual="package://brainbox_husky_description/meshes/sensor_box_v7.stl">
+    <origin xyz="0.22 0.0 0.0" rpy="0.0 0.0 1.5708"/>
+  </xacro:mesh>
+
+
+  <!-- Mounts -->
+
+
+  <!-- Sensors -->
+
+  <!-- lidar3d_0 -->
+  <xacro:include filename="$(find clearpath_sensors_description)/urdf/ouster_os1.urdf.xacro"/>
+  <xacro:ouster_os1 name="lidar3d_0" parent_link="default_mount" min_ang_h="-3.141592" max_ang_h="3.141592" min_ang_v="-0.261799" max_ang_v="0.261799" min_range="0.9" max_range="130.0" update_rate="20" samples_h="1024" samples_v="64" base="base" cap="halo">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+  </xacro:ouster_os1>
+
+  <!-- imu_0 -->
+  <xacro:include filename="$(find clearpath_sensors_description)/urdf/microstrain_imu.urdf.xacro"/>
+  <xacro:microstrain_imu name="imu_0" parent_link="default_mount" update_rate="100">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+  </xacro:microstrain_imu>
+
+  <!-- gps_0 -->
+  <xacro:include filename="$(find clearpath_sensors_description)/urdf/swiftnav_duro.urdf.xacro"/>
+  <xacro:swiftnav_duro name="gps_0" parent_link="default_mount">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+  </xacro:swiftnav_duro>
+
+
+  <!-- Manipulators -->
+
+
+  <!-- Extras -->
+
+
+</robot>
