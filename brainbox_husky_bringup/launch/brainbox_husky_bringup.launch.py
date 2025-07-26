@@ -67,12 +67,9 @@ def generate_launch_description():
 
     # Launch description for the remapping file. 
     # This remaps the simulation's topic names to match the hardware's native name (ex. /a200_0000/sensors/lidar3d_0/scan -> /ouster/scan').
-    remap_topics_launch = PathJoinSubstitution([bringup_share_dir, 'launch', 'remap_topics.launch.py'])
-    remap_topics_include = IncludeLaunchDescription(
-                              PythonLaunchDescriptionSource([remap_topics_launch]),
-                              launch_arguments = {
-                                  'robot_ns': LaunchConfiguration('robot_ns'),
-                              }.items(),
+    relay_topics_launch = PathJoinSubstitution([bringup_share_dir, 'launch', 'relay_topics.launch.py'])
+    relay_topics_include = IncludeLaunchDescription(
+                              PythonLaunchDescriptionSource([relay_topics_launch]),
                               condition=IfCondition(LaunchConfiguration('use_sim'))
                           )
 
@@ -86,5 +83,5 @@ def generate_launch_description():
         ouster_include,
         sim_include,
 
-        remap_topics_include,
+        relay_topics_include,
     ])

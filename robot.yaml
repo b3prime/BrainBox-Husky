@@ -64,7 +64,7 @@ sensors:
     urdf_enabled: true
     launch_enabled: true
     parent: default_mount
-    xyz: [0.0, 0.0, 0.0]
+    xyz: [0.215, 0.0, 0.29]
     rpy: [0.0, 0.0, 0.0]
     ros_parameters:
       duro_node:
@@ -77,7 +77,7 @@ sensors:
     urdf_enabled: true
     launch_enabled: true
     parent: default_mount
-    xyz: [0.0, 0.0, 0.0]
+    xyz: [0.215, 0.102, 0.11]
     rpy: [0.0, 0.0, 0.0]
     ros_parameters:
       microstrain_inertial_driver:
@@ -89,7 +89,7 @@ sensors:
       urdf_enabled: true
       launch_enabled: true
       parent: default_mount
-      xyz: [0.0, 0.0, 0.0]
+      xyz: [0.213, 0.0, 0.2]
       rpy: [0.0, 0.0, 0.0]
       ros_parameters:
         ouster_driver:
@@ -98,5 +98,5 @@ sensors:
           imu_port: 7503
           proc_mask: IMU|PCL|SCAN|IMG|RAW|TLM
           use_system_default_qos: false
-          cap_type: halo
-          base_type: base
+          cap_type: fins
+          base_type: none

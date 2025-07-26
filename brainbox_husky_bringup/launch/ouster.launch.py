@@ -55,6 +55,7 @@ def generate_launch_description():
             ],    
             parameters=[{'lazy': False}],
             output='screen',
+            remappings=[('/a200_0000/sensors/lidar3d_0/scan/points', '/ouster/points')],
             condition=IfCondition(use_sim) # run bridge only in sim
     )
 
